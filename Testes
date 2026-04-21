@@ -1,18 +1,86 @@
-# Testes Unitários - Validador de Usuário
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-Projeto de testes unitários em Java utilizando JUnit 5.
+public class ValidadorUsuarioTest {
 
-## Funcionalidades
+    ValidadorUsuario validador = new ValidadorUsuario();
 
-- Validação de Nome de Usuário
-- Validação de Email
-- Validação de Senha
+    // =========================
+    // Testes Nome de Usuário
+    // =========================
 
-## Tecnologias
+    @Test
+    void nomeValido() {
+        assertTrue(validador.validarNomeUsuario("Bernardo"));
+    }
 
-- Java
-- JUnit 5
+    @Test
+    void nomeMuitoCurto() {
+        assertFalse(validador.validarNomeUsuario("ab"));
+    }
 
-## Autor
+    @Test
+    void nomeMuitoLongo() {
+        assertFalse(validador.validarNomeUsuario("abcdefghijklmnopqrstu"));
+    }
 
-Bernardo Luiz
+    @Test
+    void nomeNulo() {
+        assertFalse(validador.validarNomeUsuario(null));
+    }
+
+
+    // =========================
+    // Testes Email
+    // =========================
+
+    @Test
+    void emailValido() {
+        assertTrue(validador.validarEmail("teste@email.com"));
+    }
+
+    @Test
+    void emailSemArroba() {
+        assertFalse(validador.validarEmail("testeemail.com"));
+    }
+
+    @Test
+    void emailSemDominio() {
+        assertFalse(validador.validarEmail("teste@"));
+    }
+
+    @Test
+    void emailNulo() {
+        assertFalse(validador.validarEmail(null));
+    }
+
+
+    // =========================
+    // Testes Senha
+    // =========================
+
+    @Test
+    void senhaValida() {
+        assertTrue(validador.validarSenha("Senha123"));
+    }
+
+    @Test
+    void senhaMuitoCurta() {
+        assertFalse(validador.validarSenha("S1a"));
+    }
+
+    @Test
+    void senhaSemNumeros() {
+        assertFalse(validador.validarSenha("SenhaTeste"));
+    }
+
+    @Test
+    void senhaSemLetras() {
+        assertFalse(validador.validarSenha("12345678"));
+    }
+
+    @Test
+    void senhaNula() {
+        assertFalse(validador.validarSenha(null));
+    }
+}
