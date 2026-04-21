@@ -1,0 +1,18 @@
+# Testes Unitários - Validador de Usuário
+
+Projeto de testes unitários em Java utilizando JUnit 5.
+
+## Funcionalidades
+
+- Validação de Nome de Usuário
+- Validação de Email
+- Validação de Senha
+
+## Tecnologias
+
+- Java
+- JUnit 5
+
+## Autor
+
+Bernardo Luiz
